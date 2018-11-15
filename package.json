@@ -4,8 +4,7 @@
   "description": "timemate database",
   "main": "./database/index.js",
   "scripts": {
-    "start": "node ./database/index.js",
-    "server": "node server.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
