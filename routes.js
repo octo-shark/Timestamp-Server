@@ -13,7 +13,7 @@ router.get('/db/:userID', (req, res) => {
 })
 
 router.post('/db', (req, res)=> {
-  db.insertTimestamp(req.query.user_id, req.query.activity_id, req.query.timestamp_start, req.query.timestamp_end, (err, data) => {
+  db.insertTimestamp(req.body.user_id, req.body.activity_id, req.body.timestamp_start, req.body.timestamp_end, (err, data) => {
     if(err) {
       res.status(500).send(err);
     } else {
