@@ -7,6 +7,6 @@ COPY package.json /app
 RUN npm install
 COPY . /app
 
-CMD npm start
+CMD node server.js
 
 EXPOSE 4898
