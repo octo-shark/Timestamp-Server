@@ -12,8 +12,8 @@ const Schema = mongoose.Schema;
 const userTimestamp = new Schema({
   user_id: String,
   activity_id: Number,
-  timestamp_start: String,
-  timestamp_end: String,
+  timestamp_start: Number,
+  timestamp_end: Number,
 });
 const Timestamp = mongoose.model('TimeStamp', userTimestamp);
 
