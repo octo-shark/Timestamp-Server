@@ -2,18 +2,23 @@ const express = require('express');
 const router = express.Router();
 const db = require('./database/index.js');
 
-router.get('/db', (req, res) => {
-  db.exportUserData('chris@gmail.com', (err, data) => {
-    if(err) console.log(err);
-    console.log('attempting to retrieve data: ', data);
-    res.status(200).json(data);
+router.get('/db/:userID', (req, res) => {
+  db.exportUserData(req.params.userID, (err, data) => {
+    if(err){
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
   })
 })
 
 router.post('/db', (req, res)=> {
-  db.insertTimestamp(req.query.user_id, req.query.activity_id, req.query.timestamp_start, req.query.timestamp_end, (err, data) => {
-    if(err) console.log(err);
-    res.status(201).send(`timestamp saved successfully: ${data}`);
+  db.insertTimestamp(req.body.user_id, req.body.activity_id, req.body.timestamp_start, req.body.timestamp_end, (err, data) => {
+    if(err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(data);
+    }
   })
 })
 
